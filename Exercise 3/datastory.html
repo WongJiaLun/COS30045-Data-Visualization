@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appliance Energy Consumption - Data Story</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <!-- Logo: click returns to Home -->
+            <a href="index.html" class="logo" aria-label="Home">
+                <img src="assets/img/PowerIcon.png" alt="Power Watch Logo" height="40" />
+                <span>Power<span class="logo-accent">Watch</span></span>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="televisions.html">Televisions</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="datastory.html" class="active">Data Story</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="page-header">
+                <h1>Data Story: TV Energy Consumption Insights</h1>
+                <p class="subtitle">
+                    Exploring how screen size, brand efficiency, and display technology impact energy usage across Australian television models.
+                </p>
+            </section>
+
+            <!-- Target Audience & Overview Context -->
+            <section class="story-section">
+                <h2>Target Audience &amp; Story Context</h2>
+                <p>
+                    This data story is designed for <strong>consumers</strong> seeking energy-efficient appliances, <strong>policymakers and regulators</strong> tracking energy efficiency trends, and <strong>researchers</strong> studying consumer electronics power consumption. 
+                </p>
+                <p>
+                    By analyzing registered specifications from the Australian Government Energy Rating database, this story uncovers how television power draw scales in the real world and provides actionable guidance for reducing household electricity footprints.
+                </p>
+            </section>
+
+            <!-- Story Section 1: Screen Size vs Energy Consumption -->
+            <section class="story-section">
+                <h2>1. The Screen Size Trade-Off</h2>
+                <p>
+                    As physical screen dimensions increase, power consumption surges. The visual data scale below demonstrates how stepping up through screen size classes dramatically increases annual energy consumption and estimated yearly running costs (calculated at ~$0.25/kWh).
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="visual-table">
+                        <thead>
+                            <tr>
+                                <th>Screen Size Class</th>
+                                <th>Visual Energy Scale (kWh/year)</th>
+                                <th>Avg. Annual Energy</th>
+                                <th>Est. Yearly Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>43-inch Class</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 21%; background-color: #2ecc71;"></div></div></td>
+                                <td>162 kWh</td>
+                                <td>$40.50</td>
+                            </tr>
+                            <tr>
+                                <td><strong>55-inch Class</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 44%; background-color: #f39c12;"></div></div></td>
+                                <td>339 kWh</td>
+                                <td>$84.75</td>
+                            </tr>
+                            <tr>
+                                <td><strong>65-inch Class</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 65%; background-color: #e67e22;"></div></div></td>
+                                <td>500 kWh</td>
+                                <td>$125.00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>75-inch+ Class</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 100%; background-color: #e74c3c;"></div></div></td>
+                                <td>764 kWh</td>
+                                <td>$191.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="chart-caption"><strong>Insight:</strong> Upgrading from a 43-inch model to a massive 75-inch+ screen nearly quadruples annual energy consumption, highlighting size as the primary driver of power bills.</p>
+            </section>
+
+            <!-- Story Section 2: Brand Efficiency Showdown -->
+            <section class="story-section">
+                <h2>2. Brand Efficiency Showdown</h2>
+                <p>
+                    How do major manufacturers compare when evaluating average energy efficiency star ratings across their registered product lines? The table below highlights average ratings for top brands in the dataset.
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="visual-table">
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Visual Star Rating Scale</th>
+                                <th>Average Star Rating</th>
+                                <th>Sample Size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Hisense</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 85%; background-color: #2ecc71;"></div></div></td>
+                                <td>★★★★★ (5.1)</td>
+                                <td>263 models</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LG</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 82%; background-color: #27ae60;"></div></div></td>
+                                <td>★★★★★ (4.9)</td>
+                                <td>677 models</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kogan</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 78%; background-color: #f1c40f;"></div></div></td>
+                                <td>★★★★☆ (4.7)</td>
+                                <td>788 models</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Philips</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 75%; background-color: #e67e22;"></div></div></td>
+                                <td>★★★★☆ (4.5)</td>
+                                <td>126 models</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Samsung</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 71%; background-color: #e74c3c;"></div></div></td>
+                                <td>★★★★☆ (4.3)</td>
+                                <td>1,102 models</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="chart-caption"><strong>Insight:</strong> While brands like Hisense and LG average higher star ratings in this dataset, overall energy consumption also tracks closely with their distribution of larger screen models.</p>
+            </section>
+
+            <!-- Story Section 3: Screen Technology Power Draw -->
+            <section class="story-section">
+                <h2>3. Screen Technology &amp; Power Draw</h2>
+                <p>
+                    Display technology plays a critical role in power dynamics. We analyzed average active mode power (Watts) and yearly energy consumption across standard LCD, LED-backlit LCD, and OLED panels.
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="visual-table">
+                        <thead>
+                            <tr>
+                                <th>Screen Technology</th>
+                                <th>Visual Energy Scale</th>
+                                <th>Avg. Active Power (Watts)</th>
+                                <th>Avg. Annual Energy (kWh)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Standard LCD</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 68%; background-color: #2ecc71;"></div></div></td>
+                                <td>88 W</td>
+                                <td>334 kWh</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LCD (LED Backlit)</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 93%; background-color: #f39c12;"></div></div></td>
+                                <td>119 W</td>
+                                <td>455 kWh</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OLED</strong></td>
+                                <td><div class="bar-container"><div class="bar" style="width: 100%; background-color: #e74c3c;"></div></div></td>
+                                <td>130 W</td>
+                                <td>486 kWh</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="chart-caption"><strong>Insight:</strong> Premium OLED panels and modern LED-backlit displays register higher average energy figures, largely because they are heavily featured in larger, high-performance screen classes.</p>
+            </section>
+
+            <!-- Conclusion & Key Takeaways -->
+            <section class="story-section conclusion-box">
+                <h2>Conclusion &amp; Recommendations</h2>
+                <ul>
+                    <li><strong>Find the Sweet Spot:</strong> Sticking to a 55-inch class screen provides an optimal viewing experience while keeping annual power use (~339 kWh) well below larger, power-hungry tiers.</li>
+                    <li><strong>Evaluate Beyond Star Ratings:</strong> Consumers and policymakers should look at absolute screen size and active wattage alongside star ratings to fully understand real-world energy impacts.</li>
+                    <li><strong>Make Informed Choices:</strong> Always cross-reference official energy rating labels before purchasing to balance entertainment needs with sustainability goals.</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 — Wong Jia Lun</p>
+            <p class="ai-ack">
+                <span class="ai-badge">🤖 AI</span>
+                Generative AI was used to assist with code structure and content.
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>
