@@ -62,3 +62,13 @@ energy-webpage-v1
 │
 ├── index.html
 └── README.md
+
+##Generative AI Reflection
+Tools used: I used Gemini
+Purpose: assist with structuring, and webpage styling.
+
+Adaptations: After generation, I changed the styles, page colours etc. to my liking.
+
+Key takeaway: Using the tool taught me how to style webpage better and when and where to put things.
+
+Limitations: I encountered issues such as table format not working properly and interactive not working properly which required manual intervention to fix.
