@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Story 2: The Hardware Drivers of TV Energy Consumption</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <!-- Logo: click returns to Home -->
+            <a href="index.html" class="logo" aria-label="Home">
+                <img src="assets/img/PowerIcon.png" alt="Power Watch Logo" height="40" />
+                <span>Power<span class="logo-accent">Watch</span></span>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="televisions.html">Televisions</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="datastory1.html">Data Story 1</a></li>
+                    <li><a href="datastory2.html" class="active">Data Story 2</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="page-header">
+                <h1>Data Story 2: The Hardware Drivers of TV Energy Consumption</h1>
+                <p class="subtitle">
+                    Investigating how market distribution, physical dimensions, and underlying display technologies dictate household electricity loads.
+                </p>
+            </section>
+
+            <!-- Section 1: Market Distribution (Bar Chart 2_2.png) -->
+            <section id="market-landscape" class="story-section">
+                <h2>1. Market Landscape: Dominance of Medium and Large Screens</h2>
+                <p>To understand overall energy trends, we first examine the distribution of registered television models across Australia. The occurrence count across sizing categories reveals that <strong>medium-sized</strong> televisions form the vast majority of the market, followed closely by <strong>large</strong> panels and a smaller share of compact <strong>small</strong> screens.</p>
+                
+                <div class="chart-container" style="text-align: center; margin: 25px 0;">
+                    <img src="assets/img/Bar Chart.png" alt="Occurrence count by screen size category" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;" />
+                    <p class="chart-caption" style="font-size: 0.9rem; color: #555; margin-top: 8px;"><strong>Figure 1:</strong> Model occurrence count categorized across medium, large, and small screen brackets.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Inch-by-Inch Energy Scaling (Bar Chart 3_2.png) -->
+            <section id="scaling-energy" class="story-section">
+                <h2>2. The Exponential Cost of Scale: Inch-by-Inch Analysis</h2>
+                <p>While medium TVs dominate in sheer volume, physical scale has a compounding effect on electricity usage. Mapping the mean labelled energy consumption (kWh/year) against precise screen sizes in inches shows that power demands grow modestly in smaller brackets before climbing exponentially as screens exceed 35 inches.</p>
+                
+                <div class="chart-container" style="text-align: center; margin: 25px 0;">
+                    <img src="assets/img/Bar Chart 3.png" alt="Mean labelled energy consumption by screen size in inches" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;" />
+                    <p class="chart-caption" style="font-size: 0.9rem; color: #555; margin-top: 8px;"><strong>Figure 2:</strong> Annual energy consumption scaling sharply with physical screen size in inches.</p>
+                </div>
+
+                <p>This nonlinear jump highlights why physical sizing is the single most critical decision point for residential energy efficiency.</p>
+            </section>
+
+            <!-- Section 3: Display Technology Breakdown (Bar Chart_2.png) -->
+            <section id="display-tech" class="story-section">
+                <h2>3. Technology Interaction: LCD vs. LED vs. OLED Across Sizes</h2>
+                <p>Beyond raw dimensions, internal display technologies—standard <strong>LCD</strong>, backlit <strong>LCD (LED)</strong>, and self-emissive <strong>OLED</strong>—interact differently with each size tier to shape total energy draws.</p>
+                
+                <div class="chart-container" style="text-align: center; margin: 25px 0;">
+                    <img src="assets/img/Bar Chart 2.png" alt="Energy consumption across screen technology and size categories" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;" />
+                    <p class="chart-caption" style="font-size: 0.9rem; color: #555; margin-top: 8px;"><strong>Figure 3:</strong> Comparative energy impact across LCD, LCD (LED), and OLED panel types by size category.</p>
+                </div>
+
+                <p>In large-format setups, LCD (LED) and OLED configurations command the highest aggregate energy volumes, reflecting the power required to illuminate or drive premium, high-resolution large displays.</p>
+            </section>
+
+            <!-- Conclusion & Navigation -->
+            <section id="conclusion" class="story-section conclusion-box">
+                <h2>Key Takeaways & Recommendations</h2>
+                <p><strong>Smart Sizing:</strong> Limiting screen upgrades to medium formats where possible prevents runaway household electricity costs.</p>
+                <p><a href="datastory1.html" style="color: #7cb342; font-weight: bold;">← Return to Data Story 1</a></p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Power Watch Initiative. Data sourced from Australian Government Energy Rating database.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,7 +1,7 @@
 # Power Watch: Appliance Energy Consumption Data Story
 
 ## Overview
-In this exercise, you will develop a data story based on the TV Energy Consumption dataset. Using the website created in Exercise 0.2, you will extend your work to present a meaningful narrative supported by data visualisations.
+In this exercise, you will develop a data story based on the TV Energy Consumption dataset. Using the website created in Exercise 0.2, you will extend your work to present meaningful narratives supported by data visualisations.
 
 Your goal is to communicate insights from the dataset in a clear and engaging way through your website and written explanation.
 
@@ -11,18 +11,26 @@ You must use the Exercise 3 folder in your existing forked repository and reuse 
 ## Target Audience & Story Context
 The target audience for this visualisation includes:
 
-Consumers interested in energy-efficient televisions
-Policy makers and regulators interested in energy consumption trends
-Researchers studying energy efficiency in consumer electronics
+* Consumers interested in energy-efficient televisions
+* Policy makers and regulators interested in energy consumption trends
+* Researchers studying energy efficiency in consumer electronics
+
 These audiences are interested in understanding how television energy consumption varies across models, sizes, and technologies, and how these factors influence overall energy usage.
 ---
 
 ## Key Data Insights & Sections
 
-The data story is broken down into three core analytical sections:
-1. **The Screen Size Trade-Off:** Upgrading from a 43-inch model (162 kWh / $40.50) to a massive 75-inch+ screen (764 kWh / $191.00) nearly quadruples annual energy consumption.
-2. **Brand Efficiency Showdown:** Compares average energy efficiency star ratings across major manufacturers (featuring Hisense, LG, Kogan, Philips, and Samsung).
-3. **Screen Technology & Power Draw:** Explores active mode power and yearly energy consumption across Standard LCD (88W / 334 kWh), LED-Backlit LCD (119W / 455 kWh), and OLED panels (130W / 486 kWh).
+The project features two comprehensive data stories exploring the core analytical dimensions:
+
+### Data Story 1: TV Energy Consumption Insights
+1. **Market Landscape (Screen Size Categories):** Examining how medium, large, and small televisions are distributed across Australian households.
+2. **Exact Screen Size vs. Energy Scaling:** Mapping out how annual energy consumption (kWh/year) scales exponentially as physical screen sizes increase in inches.
+3. **Display Technology Impact:** Evaluating how internal panel technologies (LCD, LCD-LED, and OLED) interact with sizing tiers to shape overall power draws.
+
+### Data Story 2: The Hardware Drivers of TV Energy Consumption
+1. **Market Distribution & Volume:** Detailed breakdown of model occurrence counts across medium, large, and small screen brackets.
+2. **Exponential Cost of Scale (Inch-by-Inch):** Deep dive into the nonlinear power jumps that occur as displays cross key size thresholds.
+3. **Technology Interaction Across Brackets:** Comparative analysis of standard LCD, backlit LED, and premium OLED energy profiles across various size categories.
 
 ---
 
@@ -42,7 +50,7 @@ The dataset is derived from public product registration data provided by the **E
 
 ### Accuracy and Limitations
 * **Laboratory Conditions:** Certified energy ratings and power draw numbers are based on standardized test procedures which may differ from real-world usage habits (e.g., user brightness settings, audio levels, and actual daily viewing hours).
-* **Sample Size Discrepancies:** Sample sizes across manufacturers vary significantly (e.g., 1,102 registered models for Samsung compared to 126 models for Philips), which can affect direct brand comparisons.
+* **Sample Size Discrepancies:** Sample sizes across manufacturers vary significantly, which can affect direct brand comparisons.
 
 ### Ethics
 * **Consumer Empowerment:** The project aims to promote transparency and sustainability by helping consumers make informed, energy-conscious purchasing decisions.
@@ -59,7 +67,8 @@ The dataset is derived from public product registration data provided by the **E
 * `index.html` – Home page
 * `televisions.html` – Television appliance catalog/data view
 * `about.html` – About Us page
-* `datastory.html` – Interactive data story page featuring visual data tables
+* `datastory1.html` – Interactive Data Story 1 page (Energy Consumption Insights)
+* `datastory2.html` – Interactive Data Story 2 page (Hardware Drivers & Scaling)
 * `assets/` – Contains stylesheets (`styles.css`), images, and scripts (`script.js`)
 
 ---
