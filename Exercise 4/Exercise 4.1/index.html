@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exercise 4.1 — SVG House and Garden</title>
+<style>
+  body {
+    font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #f4f1ea;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 40px 20px;
+  }
+  h1 { text-align: center; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #666; margin-top: 0; margin-bottom: 40px; }
+  .panel {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 24px 28px;
+  }
+  .panel h2 { margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 8px; }
+  svg { display: block; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 6px; }
+  .notes { font-size: 0.95em; line-height: 1.5; color: #444; }
+  .notes code { background: #f0eee6; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+  .checklist { font-size: 0.95em; }
+  .checklist li { margin-bottom: 6px; }
+  .ai-note { font-size: 0.85em; color: #888; border-top: 1px dashed #ccc; margin-top: 20px; padding-top: 12px; }
+
+  table.changes {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin-top: 16px;
+  }
+  table.changes caption {
+    text-align: left;
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 8px;
+  }
+  table.changes th, table.changes td {
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.changes th {
+    background: #f0eee6;
+    font-weight: 600;
+  }
+  table.changes tr:nth-child(even) td { background: #fafafa; }
+  table.changes code { background: #f0eee6; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+
+  /* Group styling applied ONCE to the windows group, inherited by both windows (Step 4) */
+  .windows {
+    fill: #cfe8f5;
+    stroke: #2b2b2b;
+    stroke-width: 2;
+  }
+  .windows .cross { stroke: #2b2b2b; stroke-width: 2; }
+</style>
+</head>
+<body>
+
+<h1>Exercise 4.1 — Draw SVGs</h1>
+<p class="subtitle">A house and garden built from SVG primitives: rect, circle, ellipse, line, polyline, polygon, path, text, and &lt;g&gt;</p>
+
+<!-- ================= STEP 1: THE PICTURE ================= -->
+<div class="panel">
+  <h2>Step 1 — The Picture </h2>
+
+  <svg viewBox="0 0 600 420" width="600" height="420">
+
+    <!-- Sky (rect) -->
+    <rect x="0" y="0" width="600" height="300" fill="#bfe6f5"></rect>
+
+    <!-- Ground (rect) -->
+    <rect x="0" y="300" width="600" height="120" fill="#8fbf6a"></rect>
+
+    <!-- Sun (circle) -->
+    <circle cx="520" cy="60" r="38" fill="#ffd54a" stroke="#e6a817" stroke-width="3"></circle>
+
+    <!-- Cloud (path, made of curves) -->
+    <path d="M60,70
+             a20,20 0 1,1 39,-4
+             a15,15 0 1,1 25,15
+             a18,18 0 1,1 -6,29
+             h-70
+             a15,15 0 1,1 12,-40 z"
+          fill="#ffffff" stroke="#d9e7ee" stroke-width="1.5"></path>
+
+    <!-- Fence (polyline for the rail, individual rects for posts) -->
+    <polyline points="10,300 10,285 60,285 60,300 110,300 110,285 160,285 160,300"
+              fill="none" stroke="#7a5230" stroke-width="4" stroke-linejoin="round"></polyline>
+    <rect x="6" y="270" width="8" height="35" fill="#7a5230"></rect>
+    <rect x="106" y="270" width="8" height="35" fill="#7a5230"></rect>
+    <rect x="156" y="270" width="8" height="35" fill="#7a5230"></rect>
+
+    <!-- Pine tree (polygon triangles + rect trunk) -->
+    <rect x="512" y="220" width="16" height="40" fill="#7a4a2b"></rect>
+    <polygon points="520,140 495,200 545,200" fill="#3f7d3f" stroke="#2c5a2c" stroke-width="2"></polygon>
+    <polygon points="520,165 490,215 550,215" fill="#4c9a4c" stroke="#2c5a2c" stroke-width="2"></polygon>
+
+    <!-- Roof (polygon) -->
+    <polygon points="130,190 300,90 470,190" fill="#a1443b" stroke="#6e2b25" stroke-width="3"></polygon>
+
+    <!-- Chimney (rect), sits behind/through roof -->
+    <rect x="380" y="105" width="30" height="65" fill="#8a5a44" stroke="#5c3a2b" stroke-width="2"></rect>
+    <rect x="376" y="100" width="38" height="10" fill="#6e4535"></rect>
+
+    <!-- House body (rect) -->
+    <rect x="160" y="190" width="280" height="180" fill="#f0d9a8" stroke="#6e2b25" stroke-width="3"></rect>
+
+    <!-- Door (rect) with knob (circle) -->
+    <rect x="270" y="290" width="60" height="80" rx="4" fill="#6e4535" stroke="#3d271c" stroke-width="2"></rect>
+    <circle cx="320" cy="333" r="3.5" fill="#e8c840"></circle>
+
+    <!-- ===== Windows, grouped so identical styling applies to both (Step 4) ===== -->
+    <!-- The .windows group carries fill/stroke ONCE; both windows inherit it. -->
+    <g class="windows">
+      <!-- Window 1: positioned with transform + translate -->
+      <g transform="translate(190,220)">
+        <rect x="0" y="0" width="50" height="50"></rect>
+        <line class="cross" x1="25" y1="0" x2="25" y2="50"></line>
+        <line class="cross" x1="0" y1="25" x2="50" y2="25"></line>
+      </g>
+      <!-- Window 2: same shape definition, only the translate differs -->
+      <g transform="translate(360,220)">
+        <rect x="0" y="0" width="50" height="50"></rect>
+        <line class="cross" x1="25" y1="0" x2="25" y2="50"></line>
+        <line class="cross" x1="0" y1="25" x2="50" y2="25"></line>
+      </g>
+    </g>
+
+    <!-- Bushes (ellipses) -->
+    <ellipse cx="175" cy="372" rx="30" ry="16" fill="#4c9a4c" stroke="#2c5a2c" stroke-width="2"></ellipse>
+    <ellipse cx="205" cy="378" rx="24" ry="13" fill="#5cae5c" stroke="#2c5a2c" stroke-width="2"></ellipse>
+    <ellipse cx="425" cy="374" rx="28" ry="15" fill="#4c9a4c" stroke="#2c5a2c" stroke-width="2"></ellipse>
+
+    <!-- Garden path (polygon, a trapezoid walkway) -->
+    <polygon points="285,370 315,370 335,420 265,420" fill="#d8c9a3" stroke="#a5906a" stroke-width="2"></polygon>
+    <!-- Stepping-stone texture on the path (small ellipses) -->
+    <ellipse cx="300" cy="385" rx="10" ry="5" fill="#c4b48c"></ellipse>
+    <ellipse cx="296" cy="405" rx="11" ry="5" fill="#c4b48c"></ellipse>
+
+    <!-- Flowers along the path (small circles on lines as stems) -->
+    <line x1="250" y1="400" x2="250" y2="415" stroke="#3f7d3f" stroke-width="2"></line>
+    <circle cx="250" cy="398" r="5" fill="#e0607a"></circle>
+    <line x1="350" y1="405" x2="350" y2="418" stroke="#3f7d3f" stroke-width="2"></line>
+    <circle cx="350" cy="403" r="5" fill="#e0607a"></circle>
+
+    <!-- Text label -->
+    <text x="300" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="0" fill="none">spacer</text>
+    <text x="300" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#2b2b2b">My House and Garden</text>
+
+  </svg>
+</div>
+<!-- ================= STEP 3: THE Customization ================= -->
+<div class="panel">
+  <h2>Step 3 — The Customization </h2>
+
+  <svg viewBox="0 0 600 420" width="600" height="420">
+
+    <!-- Sky (rect) -->
+    <rect x="0" y="0" width="600" height="300" fill="red"></rect>
+
+    <!-- Ground (rect) -->
+    <rect x="0" y="300" width="600" height="120" fill="#b69f66"></rect>
+
+    <!-- Sun (circle) -->
+    <circle cx="100" cy="60" r="38" fill="orange" stroke="#e6a817" stroke-width="3"></circle>
+
+    <!-- Cloud (path, made of curves) -->
+    <path d="M60,70
+             a20,20 0 1,1 39,-4
+             a15,15 0 1,1 25,15
+             a18,18 0 1,1 -6,29
+             h-70
+             a15,15 0 1,1 12,-40 z"
+          fill="#ffffff" stroke="#d9e7ee" stroke-width="1.5"></path>
+
+    <!-- Fence (polyline for the rail, individual rects for posts) -->
+    <polyline points="10,300 10,285 60,285 60,300 110,300 110,285 160,285 160,300"
+              fill="none" stroke="#7a5230" stroke-width="4" stroke-linejoin="round"></polyline>
+    <rect x="6" y="270" width="8" height="35" fill="#7a5230"></rect>
+    <rect x="106" y="270" width="8" height="35" fill="#7a5230"></rect>
+    <rect x="156" y="270" width="8" height="35" fill="#7a5230"></rect>
+
+    <!-- Pine tree (polygon triangles + rect trunk) -->
+    <rect x="512" y="220" width="16" height="40" fill="#7a4a2b"></rect>
+    <polygon points="520,140 495,200 545,200" fill="#3f7d3f" stroke="#2c5a2c" stroke-width="2"></polygon>
+    <polygon points="520,165 490,215 550,215" fill="#4c9a4c" stroke="#2c5a2c" stroke-width="2"></polygon>
+
+    <!-- Roof (polygon) -->
+    <polygon points="130,190 300,90 470,190" fill="#a1443b" stroke="#6e2b25" stroke-width="3"></polygon>
+
+    <!-- Chimney (rect), sits behind/through roof -->
+    <rect x="180" y="105" width="30" height="65" fill="#8a5a44" stroke="#5c3a2b" stroke-width="2"></rect>
+    <rect x="176" y="100" width="38" height="10" fill="#6e4535"></rect>
+
+    <!-- House body (rect) -->
+    <rect x="160" y="190" width="280" height="180" fill="#f0d9a8" stroke="#6e2b25" stroke-width="3"></rect>
+
+    <!-- Door (rect) with knob (circle) -->
+    <rect x="270" y="290" width="60" height="80" rx="4" fill="#6e4535" stroke="#3d271c" stroke-width="2"></rect>
+    <circle cx="320" cy="333" r="3.5" fill="#e8c840"></circle>
+
+    <!-- ===== Windows, grouped so identical styling applies to both (Step 4) ===== -->
+    <!-- The .windows group carries fill/stroke ONCE; both windows inherit it. -->
+    <g class="windows">
+      <!-- Window 1: positioned with transform + translate -->
+      <g transform="translate(190,220)">
+        <rect x="0" y="0" width="50" height="50"></rect>
+        <line class="cross" x1="25" y1="0" x2="25" y2="50"></line>
+        <line class="cross" x1="0" y1="25" x2="50" y2="25"></line>
+      </g>
+      <!-- Window 2: same shape definition, only the translate differs -->
+      <g transform="translate(360,220)">
+        <rect x="0" y="0" width="50" height="50"></rect>
+        <line class="cross" x1="25" y1="0" x2="25" y2="50"></line>
+        <line class="cross" x1="0" y1="25" x2="50" y2="25"></line>
+      </g>
+    </g>
+
+    <!-- Bushes (ellipses) -->
+    <ellipse cx="175" cy="372" rx="30" ry="16" fill="#4c9a4c" stroke="#2c5a2c" stroke-width="2"></ellipse>
+    <ellipse cx="205" cy="378" rx="24" ry="13" fill="#5cae5c" stroke="#2c5a2c" stroke-width="2"></ellipse>
+    <ellipse cx="425" cy="374" rx="28" ry="15" fill="#4c9a4c" stroke="#2c5a2c" stroke-width="2"></ellipse>
+
+    <!-- Garden path (polygon, a trapezoid walkway) -->
+    <polygon points="285,370 315,370 335,420 265,420" fill="#d8c9a3" stroke="#a5906a" stroke-width="2"></polygon>
+    <!-- Stepping-stone texture on the path (small ellipses) -->
+    <ellipse cx="300" cy="385" rx="10" ry="5" fill="#c4b48c"></ellipse>
+    <ellipse cx="296" cy="405" rx="11" ry="5" fill="#c4b48c"></ellipse>
+
+    <!-- Flowers along the path (small circles on lines as stems) -->
+    <line x1="250" y1="400" x2="250" y2="415" stroke="#3f7d3f" stroke-width="2"></line>
+    <circle cx="250" cy="398" r="5" fill="#e0607a"></circle>
+    <line x1="350" y1="405" x2="350" y2="418" stroke="#3f7d3f" stroke-width="2"></line>
+    <circle cx="350" cy="403" r="5" fill="#e0607a"></circle>
+
+    <!-- Text label -->
+    <text x="300" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="0" fill="none">spacer</text>
+    <text x="300" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#2b2b2b">My House and Garden</text>
+
+  </svg>
+</div>
+<!-- ================= STEP 3: BEFORE / AFTER CHANGES ================= -->
+<div class="panel">
+  <h2>Step 3 — Coordinates Changed (Before / After)</h2>
+  <p class="notes">
+    This table documents each customisation made to the original AI-generated picture: the shape, what changed,
+    and the exact attribute values before and after. Replace the example rows with your own — the values here
+    match the demo house above, so update them once you customise your own version.
+  </p>
+
+  <table class="changes">
+    <caption>Log every shape you moved, resized, recoloured, or added/removed a stroke on.</caption>
+    <thead>
+      <tr>
+        <th>Shape</th>
+        <th>Attribute(s)</th>
+        <th>Before</th>
+        <th>After</th>
+        <th>What / why</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sky colour <code>&lt;fill&gt;</code></td>
+        <td><code>fill</code></td>
+        <td>fill="#bfe6f5"></td>
+        <td>fill="red"></td>
+        <td>Change the sky colour to red.</td>
+      </tr>
+      <tr>
+        <td>Ground colour <code>&lt;fill&gt;</code></td>
+        <td><code>fill</code></td>
+        <td>fill="#8fbf6a"</td>
+        <td>fill="#b69f66"></td>
+        <td>Made it a darker brown.</td>
+      </tr>
+      <tr>
+        <td>Sun colour and position <code>&lt;circle&gt;</code></td>
+        <td><code>cx, cy, r, fill</code></td>
+        <td>cx="520" cy="60" r="38" fill="#ffd54a"</td>
+        <td>cx="100" cy="60" r="38" fill="orange"/td>
+        <td>Change the sun position and colour.</td>
+      </tr>
+      <tr>
+        <td>Chimney Position<code>&lt;rect&gt;</code> (in <code>&lt;g&gt;</code>)</td>
+        <td><code>x</code></td>
+        <td>x="180" y="105" width="30" height="65", x="176" y="100" width="38" height="10" </td>
+        <td> x="380" y="105" width="30" height="65", x="376" y="100" width="38" height="10"</td>
+        <td>Move chimney position from right to left.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ================= STEP 2: ANNOTATED COORDINATE VERSION ================= -->
+<div class="panel">
+  <h2>Step 2 — Annotated Coordinate System</h2>
+  <p class="notes">
+    This only annotates the shapes actually changed in Step 3: the sky colour, the ground colour, the sun
+    (position + colour), and the chimney (position). Remember: in SVG the origin <code>(0,0)</code> is the
+    <strong>top-left corner</strong>, x increases to the right, and y increases <strong>downwards</strong>.
+  </p>
+
+  <svg viewBox="0 0 600 420" width="600" height="420">
+    <!-- background copy of the CUSTOMISED scene from Step 3, faded -->
+    <rect x="0" y="0" width="600" height="420" fill="#ffffff"></rect>
+    <g opacity="0.35">
+      <rect x="0" y="0" width="600" height="300" fill="red"></rect>
+      <rect x="0" y="300" width="600" height="120" fill="#b69f66"></rect>
+      <circle cx="100" cy="60" r="38" fill="orange"></circle>
+      <polygon points="130,190 300,90 470,190" fill="#a1443b"></polygon>
+      <rect x="180" y="105" width="30" height="65" fill="#8a5a44"></rect>
+      <rect x="160" y="190" width="280" height="180" fill="#f0d9a8"></rect>
+    </g>
+
+    <!-- grid lines -->
+    <g stroke="#dddddd" stroke-width="1">
+      <line x1="0" y1="50" x2="600" y2="50"></line>
+      <line x1="0" y1="100" x2="600" y2="100"></line>
+      <line x1="0" y1="150" x2="600" y2="150"></line>
+      <line x1="0" y1="200" x2="600" y2="200"></line>
+      <line x1="0" y1="250" x2="600" y2="250"></line>
+      <line x1="0" y1="300" x2="600" y2="300"></line>
+      <line x1="0" y1="350" x2="600" y2="350"></line>
+      <line x1="0" y1="400" x2="600" y2="400"></line>
+      <line x1="50" y1="0" x2="50" y2="420"></line>
+      <line x1="100" y1="0" x2="100" y2="420"></line>
+      <line x1="150" y1="0" x2="150" y2="420"></line>
+      <line x1="200" y1="0" x2="200" y2="420"></line>
+      <line x1="250" y1="0" x2="250" y2="420"></line>
+      <line x1="300" y1="0" x2="300" y2="420"></line>
+      <line x1="350" y1="0" x2="350" y2="420"></line>
+      <line x1="400" y1="0" x2="400" y2="420"></line>
+      <line x1="450" y1="0" x2="450" y2="420"></line>
+      <line x1="500" y1="0" x2="500" y2="420"></line>
+      <line x1="550" y1="0" x2="550" y2="420"></line>
+    </g>
+    <g font-family="monospace" font-size="10" fill="#999">
+      <text x="4" y="12">0,0</text>
+      <text x="4" y="112">y=100</text>
+      <text x="4" y="312">y=300</text>
+      <text x="102" y="12">x=100</text>
+      <text x="182" y="12">x=180</text>
+    </g>
+
+    <!-- callout: sky rect -->
+    <line x1="500" y1="20" x2="500" y2="20" stroke="none"></line>
+    <text x="440" y="20" font-family="monospace" font-size="11" fill="#c0392b">rect (sky): x=0,y=0,</text>
+    <text x="440" y="32" font-family="monospace" font-size="11" fill="#c0392b">w=600,h=300, fill="red"</text>
+
+    <!-- callout: ground rect -->
+    <text x="440" y="340" font-family="monospace" font-size="11" fill="#7a5a1f">rect (ground): x=0,y=300,</text>
+    <text x="440" y="352" font-family="monospace" font-size="11" fill="#7a5a1f">w=600,h=120, fill="#b69f66"</text>
+
+    <!-- callout: circle (sun) -->
+    <line x1="100" y1="60" x2="55" y2="150" stroke="#c46a00" stroke-width="1.5"></line>
+    <circle cx="100" cy="60" r="4" fill="#c46a00"></circle>
+    <text x="20" y="165" font-family="monospace" font-size="11" fill="#c46a00">circle (sun): cx=100,</text>
+    <text x="20" y="177" font-family="monospace" font-size="11" fill="#c46a00">cy=60,r=38, fill="orange"</text>
+    <text x="20" y="189" font-family="monospace" font-size="11" fill="#c46a00">(moved from cx=520, was yellow)</text>
+
+    <!-- callout: rect (chimney, moved) -->
+    <line x1="195" y1="105" x2="230" y2="55" stroke="#8e5a1a" stroke-width="1.5"></line>
+    <circle cx="195" cy="105" r="4" fill="#8e5a1a"></circle>
+    <text x="234" y="50" font-family="monospace" font-size="11" fill="#8e5a1a">rect (chimney): x=180,</text>
+    <text x="234" y="62" font-family="monospace" font-size="11" fill="#8e5a1a">y=105,w=30,h=65</text>
+    <text x="234" y="74" font-family="monospace" font-size="11" fill="#8e5a1a">(moved from x=380)</text>
+
+  </svg>
+</div>
+
+
+</body>
+</html>

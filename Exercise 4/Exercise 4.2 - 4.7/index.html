@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appliance Energy Consumption - Home</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <!-- Logo: click returns to Home -->
+            <a href="index.html" class="logo" aria-label="Home">
+                <!-- Power icon as SVG (replaces PowerIcon.png) -->
+                <img src="assets/img/PowerIcon.png" alt="Power Watch Logo" height="40" />
+                <span>Power<span class="logo-accent">Watch</span></span>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="televisions.html">Televisions</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Hero / Intro -->
+            <section class="hero">
+                <h1>Appliance Energy Consumption</h1>
+                <p class="subtitle">
+                    Understanding how much energy your appliances use — and how to save.
+                </p>
+                <p>
+                    In Australia, household appliances account for a significant portion of
+                    total energy consumption. From fridges to televisions, every device
+                    contributes to your power bill and environmental footprint.
+                </p>
+                <p>
+                    This site provides insights into energy usage patterns, efficiency ratings,
+                    and practical tips to help you make smarter choices.
+                </p>
+            </section>
+
+            <!-- Key stats / highlights -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">~40%</span>
+                    <span class="stat-label">of household energy use</span>
+                    <span class="stat-desc">comes from appliances</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5★</span>
+                    <span class="stat-label">Energy Rating</span>
+                    <span class="stat-desc">the most efficient appliances</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$1,500</span>
+                    <span class="stat-label">average annual power bill</span>
+                    <span class="stat-desc">for an Australian household</span>
+                </div>
+
+            </section>
+<!-- Replace the old Step 4 SVG div with this new container -->
+            <div class="responsive-svg-container"></div>
+            <!-- FAQ Accordion (JavaScript driven) -->
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span>What is the most energy-hungry appliance in a typical home?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>
+                                In most Australian homes, heating and cooling systems (reverse-cycle air conditioners)
+                                consume the most energy, followed by water heaters and refrigerators.
+                                Among entertainment devices, televisions and gaming consoles are the biggest
+                                contributors.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span>How does the Australian Energy Rating system work?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>
+                                The Energy Rating Label shows a star rating from 1 to 6 (or 10 for some appliances)
+                                and an estimated annual energy consumption in kWh. More stars mean greater
+                                efficiency. The label is mandatory for many appliances sold in Australia,
+                                including TVs, fridges, dishwashers, and air conditioners.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span>How can I reduce my appliance energy consumption?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>
+                                Simple steps include: turning devices off at the wall when not in use,
+                                choosing appliances with higher star ratings, using energy-saving modes,
+                                maintaining appliances (e.g., cleaning fridge coils), and considering
+                                solar power or time-of-use tariffs to shift usage to off-peak periods.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span>Are smart appliances worth the extra cost?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-body">
+                            <p>
+                                Smart appliances often offer energy management features, remote monitoring,
+                                and usage insights that can help reduce consumption. While they typically
+                                cost more upfront, the long-term energy savings and convenience can make
+                                them a worthwhile investment — especially for high-use devices like
+                                air conditioners and refrigerators.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 — Wong Jia Lun</p>
+            <p class="ai-ack">
+                <span class="ai-badge">🤖 AI</span>
+                Generative AI was used to assist with code structure and content.
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+</body>
+</html>
