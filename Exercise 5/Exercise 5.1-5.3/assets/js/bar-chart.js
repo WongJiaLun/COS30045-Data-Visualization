@@ -69,7 +69,7 @@
             .attr("y", d => yScale(d.energy))
             .attr("width", xScale.bandwidth())
             .attr("height", d => innerHeight - yScale(d.energy))
-            .attr("fill", "steelblue");
+            .attr("fill", "green");
 
         // Data Labels on top of bars
         innerChart.selectAll(".label")
