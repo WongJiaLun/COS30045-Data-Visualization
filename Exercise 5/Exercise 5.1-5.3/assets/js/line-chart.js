@@ -2,23 +2,23 @@
 // Exercise 5.2: Scatter Plot and Line Chart
 // ==========================================
 
-(() => {
+const drawLineChart = data => {
     // 1. Set up margins (matching Ex 5.1)
     const margin = { top: 40, right: 30, bottom: 50, left: 60 };
-    const innerWidth = 600 - margin.left - margin.right;
-    const innerHeight = 400 - margin.top - margin.bottom;
+    const width = 1000;
+    const height = 500;
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
 
     // 2. Create the svg containers
     const svg = d3.select("#line-chart")
         .append("svg")
-        .attr("viewBox", `0 0 600 400`) 
+        .attr("viewBox", `0 0 ${width} ${height}`) // Fixed variable interpolation
         .style("border", "1px solid black");
 
     const innerChart = svg.append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-
-    const drawLineChart = data => {
         
         // 3. Create the Scales
         // Use d3.extent to find min and max years automatically
@@ -31,7 +31,8 @@
             .range([innerHeight, 0]);
 
         // 4. Setup the Axes (forcing year to be an integer format)
-        const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
+        const xAxis = d3.axisBottom(xScale)
+        .tickFormat(d3.format("d"));
         const yAxis = d3.axisLeft(yScale);
 
         // Add X-Axis to innerChart
@@ -79,18 +80,16 @@
             .y(d => yScale(d.averagePrice))
             .curve(d3.curveMonotoneX); // Bonus: smooths the line slightly
 
-        innerChart.append("path")
-            .datum(data) 
-            .attr("d", lineGenerator)
+        innerChart
+            .append("path")
+            .attr("d", lineGenerator(data))
             .attr("fill", "none")
-            .attr("stroke", "darkblue")
+            .attr("stroke", "green")
             .attr("stroke-width", 2);
     };
 
 
-    // ==========================================
     // Data Loading
-    // ==========================================
 
 
     d3.csv("assets/data/ARE_Spot_Prices.csv").then(rawData => {
@@ -113,4 +112,3 @@
     }).catch(error => {
         console.error("Error loading ARE_Spot_Prices.csv:", error);
     });
-})();

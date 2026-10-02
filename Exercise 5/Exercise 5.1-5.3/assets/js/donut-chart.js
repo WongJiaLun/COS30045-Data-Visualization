@@ -2,15 +2,17 @@
 // Exercise 5.3: Donut Chart
 // ==========================================
 
-(() => {
+    const drawDonutChart = data => {
     // 1. Set up dimensions and margins
-    const width = 600;
-    const height = 400;
-    const padding = 40;
+    const width = 1000;
+    const height = 600;
     
     // Calculate radius to fit the shortest side of the SVG
-    const radius = Math.min(width, height) / 2 - padding;
-
+    const radius = Math.min(width, height) / 2 - 20;
+    
+    const color =d3.scaleOrdinal()
+        .domain(data.map(d => d.Screensize_category))
+        .range(d3.schemeSet2); // Built-in D3 color palette
     // 2. Create the SVG containers
     const svg = d3.select("#donut-chart")
         .append("svg")
@@ -19,35 +21,27 @@
 
     // For a pie chart, the origin (0,0) is the center of the circle.
     // We translate the innerChart to the exact middle of the 600x400 viewBox.
-    const innerChart = svg.append("g")
+    const innerChart = svg
+        .append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-
-    const drawDonutChart = data => {
-        
-        // 3. Create the Scales (Discrete colors for categories)
-        const colorScale = d3.scaleOrdinal()
-            .domain(data.map(d => d.category))
-            .range(d3.schemeSet2); // Built-in D3 color palette
 
         // 4. Calculate the Angles
         const pie = d3.pie()
-            .value(d => d.value)
+            .value(d => d.Count)
             .sort(null); // Maintains the order from the CSV file
 
         // 5. Set up the Arcs
         const arcGenerator = d3.arc()
             .innerRadius(radius * 0.6) // 60% inner radius creates the donut hole
-            .outerRadius(radius)
-            .padAngle(0.03)            // Adds spacing between slices
-            .cornerRadius(6);          // Rounds the edges of the slices
+            .outerRadius(radius * 1)
 
         // 6. Draw the Arcs
-        innerChart.selectAll("path")
+        innerChart
+            .selectAll("path")
             .data(pie(data))
             .join("path")
             .attr("d", arcGenerator)
-            .attr("fill", d => colorScale(d.data.category))
+            .attr("fill", d => color(d.data.Screensize_category))
             .attr("stroke", "white")
             .attr("stroke-width", 2);
 
@@ -57,7 +51,7 @@
             .join("text")
             .attr("transform", d => `translate(${arcGenerator.centroid(d)})`)
             .attr("text-anchor", "middle")
-            .text(d => d.data.category)
+            .text(d => d.data.Screensize_category)
             .style("font-size", "14px")
             .style("font-weight", "bold")
             .style("fill", "#333");
@@ -75,10 +69,10 @@
         const cleanData = rawData.map(d => {
             const keys = Object.keys(d);
             return {
-                category: String(d[keys[0]]).trim(),
-                value: parseFloat(d[keys[1]]) || 0
+                Screensize_category: String(d[keys[0]]).trim(),
+                Count: parseFloat(d[keys[1]]) || 0
             };
-        }).filter(d => d.category && !isNaN(d.value));
+        }).filter(d => d.Screensize_category && !isNaN(d.Count));
 
         console.log("Donut Chart Data Loaded:", cleanData);
         
@@ -90,4 +84,3 @@
     }).catch(error => {
         console.error("Error loading Data_exercise 5.3.csv:", error);
     });
-})();
