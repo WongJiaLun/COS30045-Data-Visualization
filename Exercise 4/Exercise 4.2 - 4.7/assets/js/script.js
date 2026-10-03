@@ -1,5 +1,4 @@
-/**
- * Accordion functionality for FAQ section
+/* Accordion functionality for FAQ section
  * Toggles 'open' class on accordion items when header is clicked
  */
 

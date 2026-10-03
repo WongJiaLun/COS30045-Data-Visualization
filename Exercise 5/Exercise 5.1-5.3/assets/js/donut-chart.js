@@ -1,6 +1,6 @@
-// ==========================================
+
 // Exercise 5.3: Donut Chart
-// ==========================================
+
 
     const drawDonutChart = data => {
     // 1. Set up dimensions and margins
@@ -20,7 +20,6 @@
         .style("border", "1px solid black");
 
     // For a pie chart, the origin (0,0) is the center of the circle.
-    // We translate the innerChart to the exact middle of the 600x400 viewBox.
     const innerChart = svg
         .append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
@@ -57,10 +56,8 @@
             .style("fill", "#333");
     };
 
-
-    // ==========================================
     // Data Loading
-    // ==========================================
+ 
 
     d3.csv("assets/data/Data_exercise 5.3.csv").then(rawData => {
         console.log("Raw Donut CSV (Row 1):", rawData[0]);

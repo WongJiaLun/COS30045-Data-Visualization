@@ -1,6 +1,5 @@
-// ==========================================
+
 // Exercise 5.2: Scatter Plot and Line Chart
-// ==========================================
 
 const drawLineChart = data => {
     // 1. Set up margins (matching Ex 5.1)
