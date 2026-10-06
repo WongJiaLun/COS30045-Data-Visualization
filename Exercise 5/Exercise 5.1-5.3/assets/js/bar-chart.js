@@ -80,9 +80,9 @@ const drawBarChart = data => {
 };
 
 
-// ==========================================
+
 // Data Loading
-// ==========================================
+
 
 d3.csv("assets/data/Data_exercise 5.1-1.csv", d => {
     const keys = Object.keys(d);

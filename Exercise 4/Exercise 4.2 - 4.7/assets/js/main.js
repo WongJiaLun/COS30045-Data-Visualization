@@ -68,7 +68,6 @@ d3.csv("assets/data/BrandCount.csv", d => {
 
 // Exercise 4.5 + 4.6 +4.7: D3 Binding and Drawing Function + x and y Scales
 
-// Defined BEFORE d3.csv calls it to avoid redeclaration syntax errors
 const drawBarChart = data => {
     const barHeight = 20;
     const barSpacing = 5;
