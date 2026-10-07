@@ -79,10 +79,7 @@ const drawBarChart = data => {
         .style("font-size", "13px");
 };
 
-
-
 // Data Loading
-
 
 d3.csv("assets/data/Data_exercise 5.1-1.csv", d => {
     const keys = Object.keys(d);
