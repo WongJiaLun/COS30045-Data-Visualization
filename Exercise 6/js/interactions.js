@@ -20,12 +20,12 @@ const populateFilters = (data) => {
                 
                 // Update the isActive state in filters_screen
                 filters_screen.forEach(filter => {
-                    filter.isActive = (d.id === filter.id);
+                    filter.isActive = (d.id === filter.id ? true : false);
                 });
                 
                 // Update the CSS 'active' class on the buttons
                 filterContainer.selectAll(".filter")
-                    .classed("active", filter => filter.id === d.id);
+                    .classed("active", filter => filter.id === d.id ? true : false);
 
                 // 3. Update the chart
                 updateHistogram(d.id);
